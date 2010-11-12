@@ -14,6 +14,9 @@ end
 
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 
+gem 'taps', '0.3.14'
+
+
 # Seems aws-s3 is required by paperclip
 gem 'aws-s3', :require => 'aws/s3'
 #gem 'right_aws'
