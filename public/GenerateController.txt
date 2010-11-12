@@ -1,0 +1,17 @@
+rails generate controller Ed_all_events edit index new show
+
+
+-----Glasgow
+
+
+rails generate controller Glasg_ten_events edit index new show
+
+rails generate controller Glasg_all_events edit index new show
+
+
+-----London
+
+
+rails generate controller Lond_ten_events edit index new show
+
+rails generate controller Lond_all_events edit index new show

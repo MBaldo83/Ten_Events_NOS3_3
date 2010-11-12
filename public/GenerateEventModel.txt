@@ -1,0 +1,14 @@
+rails generate model Ed_all_event eventName:string bandName:string venue:string xCoord:string yCoord:string doorsOpen:time price:string date:date description:text specialOffers:text month_id:integer
+
+-----Glasgow
+
+rails generate model Glasg_ten_event eventName:string bandName:string venue:string xCoord:string yCoord:string doorsOpen:time price:string date:date description:text specialOffers:text month_id:integer
+
+rails generate model Glasg_all_event eventName:string bandName:string venue:string xCoord:string yCoord:string doorsOpen:time price:string date:date description:text specialOffers:text month_id:integer
+
+
+-----London
+
+rails generate model Lond_ten_event eventName:string bandName:string venue:string xCoord:string yCoord:string doorsOpen:time price:string date:date description:text specialOffers:text month_id:integer
+
+rails generate model Lond_all_event eventName:string bandName:string venue:string xCoord:string yCoord:string doorsOpen:time price:string date:date description:text specialOffers:text month_id:integer

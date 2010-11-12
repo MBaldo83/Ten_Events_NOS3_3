@@ -1,0 +1,69 @@
+<%= form_for event_type , :html => { :multipart => true } do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  
+	<div class="field">
+		<%= f.label :eventName %><br />
+		<%= f.text_field :eventName %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :bandName %><br />
+		<%= f.text_field :bandName %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :venue %><br />
+		<%= f.text_field :venue %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :xCoord %><br />
+		<%= f.text_field :xCoord %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :yCoord %><br />
+		<%= f.text_field :yCoord %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :doorsOpen %><br />
+		<%= f.time_select :doorsOpen %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :price %><br />
+		<%= f.text_field :price %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :eventDate %><br />
+		<%= f.date_select :eventDate %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_area :description %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :specialOffers %><br />
+		<%= f.text_area :specialOffers %>
+	</div>
+
+	<div class="field">
+		<%= f.label :s3filename %><br />
+		<%= f.text_field :s3filename %>
+	</div>
+
+	<div class="field">
+		<%= f.label :copyEvent %><br />
+		<%= f.check_box :copyEvent %><br />
+	</div>
+
+	<div class="actions">
+		<%= f.submit "Add Event" %>
+	</div>
+
+	
+<% end %>
