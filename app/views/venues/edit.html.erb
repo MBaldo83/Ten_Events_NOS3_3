@@ -1,0 +1,29 @@
+<h1>Edit Venue</h1>
+
+<%= form_for (@venue) do |f| %>
+
+<%= select(:venue, :city_location, [['Edinburgh', 'Edinburgh' ], ['Glasgow', 'Glasgow'], ['London', 'London']]) %>
+
+	<div class="field">
+		<%= f.label :venueName %><br />
+		<%= f.text_field :venueName %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :longitude %><br />
+		<%= f.text_field :longitude %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :latitude %><br />
+		<%= f.text_field :latitude %>
+	</div>
+	
+	<%= f.hidden_field :old_venue_name  %>
+	
+	<div class="actions">
+		<%= f.submit "Update Venue" %>
+	</div>
+
+	
+	<% end %>

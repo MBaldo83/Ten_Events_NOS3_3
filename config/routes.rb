@@ -1,31 +1,25 @@
 TenEvents::Application.routes.draw do
 
-	# all these gets prob redundant, check after test with iPhone
-  #get "ed_month_events/index"
-  #get "ed_ten_events/show"
-  #get "ed_ten_events/edit"
-  #get "ed_ten_events/new"
+  get "suggested_events/index"
+  get "band_info_collect/new"
+
+  get "all_events/new"
+  get "edinburgh/index"
 
   resources :admin_pages
   resources :users
+  resources :all_events
+  resources :venues
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :suggested_events
+  resources :event_searches
   
-  # Do I really need all of these for each city!!!
-  resources :edinburgh
-  
-  resources :glasgow
-  
-  resources :london
-  
-  
-  match '/newAdmin',  :to => 'users#new'
+  match '/band_info_collect', :to => 'band_info_collect#index'
+  match '/edinburgh', :to => 'edinburgh#index'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/sessions', :to => 'sessions#create'
   
-  get "admin_pages/A_Summary"
-  get "admin_pages/A_Glasgow"
-  get "admin_pages/A_London"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

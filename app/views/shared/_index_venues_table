@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Venue</th>
+    <th>City</th>
+  </tr>
+
+<% venues_group.each do |venue| %>
+  <tr>
+    <td><%=h venue.venueName %></td>
+    <td><%=h venue.city_location %></td>
+	<td><%= link_to 'Show', venue %></td>
+	<td><%= link_to "Edit", polymorphic_path(venue, :action => :edit) %></td>
+   	<td><%= link_to "Delete", venue, :method => :delete, :confirm => 'Are you sure?',  
+									 :title => "Delete Event" %></td>
+  </tr>
+<% end %>
+</table>

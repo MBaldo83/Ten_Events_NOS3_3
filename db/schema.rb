@@ -10,7 +10,62 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101112141846) do
+ActiveRecord::Schema.define(:version => 20101206200928) do
+
+  create_table "all_events", :force => true do |t|
+    t.string   "eventName"
+    t.string   "bandName"
+    t.string   "venue"
+    t.string   "longitude"
+    t.string   "latitude"
+    t.time     "doorsOpen"
+    t.string   "price"
+    t.date     "eventDate"
+    t.text     "description"
+    t.text     "specialOffers"
+    t.boolean  "ten_event"
+    t.boolean  "all_TT_event"
+    t.string   "city_location"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_searches", :force => true do |t|
+    t.string   "urlOne"
+    t.string   "bandName"
+    t.string   "eventDateCSS"
+    t.string   "eventNameCSS"
+    t.string   "eventTimeCSS"
+    t.string   "eventLocationCSS"
+    t.string   "priceCSS"
+    t.string   "descriptionCSS"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "suggested_events", :force => true do |t|
+    t.string   "eventName"
+    t.string   "bandName"
+    t.string   "venue"
+    t.string   "longitude"
+    t.string   "latitude"
+    t.time     "doorsOpen"
+    t.string   "price"
+    t.date     "eventDate"
+    t.text     "description"
+    t.text     "specialOffers"
+    t.string   "city_location"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "all_TT_event"
+    t.boolean  "ten_event"
+  end
 
   create_table "users", :force => true do |t|
     t.string    "name"
@@ -19,6 +74,19 @@ ActiveRecord::Schema.define(:version => 20101112141846) do
     t.timestamp "updated_at"
     t.string    "encrypted_password"
     t.string    "salt"
+  end
+
+  create_table "venues", :force => true do |t|
+    t.string   "venueName"
+    t.string   "city_location"
+    t.string   "longitude"
+    t.string   "latitude"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "old_venue_name"
   end
 
 end

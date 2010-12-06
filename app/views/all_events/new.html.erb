@@ -1,0 +1,58 @@
+<h1> New AllEvents</h1> 
+
+<%= form_for (@event) do |f| %>
+
+	<div class="field">
+		<%= f.label :ten_event %><br />
+		<%= f.check_box :ten_event %><br />
+	</div>
+	
+	<div class="field">
+		<%= f.label :all_TT_event %><br />
+		<%= f.check_box :all_TT_event %><br />
+	</div>
+  
+	<div class="field">
+		<%= f.label :eventName %><br />
+		<%= f.text_field :eventName %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :bandName %><br />
+		<%= f.text_field :bandName %>
+	</div>
+	
+	<%= collection_select(:all_event, :venue, @venues, :venueName, :venueName) %>
+	
+	<div class="field">
+		<%= f.label :doorsOpen %><br />
+		<%= f.time_select :doorsOpen %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :price %><br />
+		<%= f.text_field :price %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :eventDate %><br />
+		<%= f.date_select :eventDate %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_area :description %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :specialOffers %><br />
+		<%= f.text_area :specialOffers %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit "Add Event" %>
+	</div>
+
+	
+<% end %>
+

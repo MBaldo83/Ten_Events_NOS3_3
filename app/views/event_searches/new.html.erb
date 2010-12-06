@@ -1,0 +1,50 @@
+<h1>New Band Info Collect details</h1>
+
+<%= form_for (@event_search) do |f| %>
+
+	<div class="field">
+		<%= f.label :bandName %><br />
+		<%= f.text_field :bandName %>
+	</div>
+  
+	<div class="field">
+		<%= f.label :urlOne	%><br />
+		<%= f.text_field :urlOne %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :eventDateCSS %><br />
+		<%= f.text_field :eventDateCSS %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :eventNameCSS %><br />
+		<%= f.text_field :eventNameCSS %>
+	</div>
+		
+	<div class="field">
+		<%= f.label :eventTimeCSS %><br />
+		<%= f.text_field :eventTimeCSS %>
+	</div>
+		
+	<div class="field">
+		<%= f.label :eventLocationCSS %><br />
+		<%= f.text_field :eventLocationCSS %>
+	</div>
+		
+	<div class="field">
+		<%= f.label :priceCSS %><br />
+		<%= f.text_field :priceCSS %>
+	</div>
+
+	<div class="field">
+		<%= f.label :descriptionCSS %><br />
+		<%= f.text_field :descriptionCSS %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit "Add Event Search" %>
+	</div>
+
+	
+<% end %>

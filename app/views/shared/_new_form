@@ -1,5 +1,10 @@
-<%= form_for event_type , :html => { :multipart => true } do |f| %>
+<%= form_for event_type, :html => { :multipart => true } do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
+
+	<div class="field">
+		<%= f.label :city_location %><br />
+		<%= f.text_field :city_location %>
+	</div>
   
 	<div class="field">
 		<%= f.label :eventName %><br />
@@ -17,13 +22,13 @@
 	</div>
 	
 	<div class="field">
-		<%= f.label :xCoord %><br />
-		<%= f.text_field :xCoord %>
+		<%= f.label :longitude %><br />
+		<%= f.text_field :longitude %>
 	</div>
 	
 	<div class="field">
-		<%= f.label :yCoord %><br />
-		<%= f.text_field :yCoord %>
+		<%= f.label :latitude %><br />
+		<%= f.text_field :latitude %>
 	</div>
 	
 	<div class="field">
@@ -49,16 +54,6 @@
 	<div class="field">
 		<%= f.label :specialOffers %><br />
 		<%= f.text_area :specialOffers %>
-	</div>
-
-	<div class="field">
-		<%= f.label :s3filename %><br />
-		<%= f.text_field :s3filename %>
-	</div>
-
-	<div class="field">
-		<%= f.label :copyEvent %><br />
-		<%= f.check_box :copyEvent %><br />
 	</div>
 
 	<div class="actions">

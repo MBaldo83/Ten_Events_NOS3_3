@@ -1,0 +1,28 @@
+<h1>New Venue</h1>
+
+<%= form_for (@venue) do |f| %>
+
+<%= select(:venue, :city_location, [['Edinburgh', 'Edinburgh' ], ['Glasgow', 'Glasgow'], ['London', 'London']]) %>
+
+	<div class="field">
+		<%= f.label :venueName %><br />
+		<%= f.text_field :venueName %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :longitude %><br />
+		<%= f.text_field :longitude %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :latitude %><br />
+		<%= f.text_field :latitude %>
+	</div>
+	
+	<div class="actions">
+		<%= f.submit "Add Venue" %>
+	</div>
+
+	
+	<% end %>
+

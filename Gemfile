@@ -25,6 +25,13 @@ group :test do
   gem 'rspec', '2.0.0.beta.18'
 end
 
+# Nokogiri to look at other sites
+gem 'nokogiri'
+
+# Chronic to parse date / time from strings
+
+gem 'chronic'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -36,7 +43,6 @@ end
 
 # Bundle the extra gems:
 # gem 'bj'
-# gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 
 

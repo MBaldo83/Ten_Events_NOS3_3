@@ -2,14 +2,14 @@
   <tr>
     <th>Event Name</th>
     <th>Band Name</th>
-    <th>S3 filename</th>
+    <th>Venue</th>
   </tr>
 
 <% events_group.each do |event| %>
   <tr>
     <td><%=h event.eventName %></td>
     <td><%=h event.bandName %></td>
-    <td><%=h event.s3filename %></td>
+    <td><%=h event.venue %></td>
 	<td><%= link_to 'Show', event %></td>
 	<td><%= link_to "Edit", polymorphic_path(event, :action => :edit) %></td>
    	<td><%= link_to "Delete", event, :method => :delete, :confirm => 'Are you sure?',  

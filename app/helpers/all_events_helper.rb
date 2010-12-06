@@ -1,0 +1,2 @@
+module AllEventsHelper
+end

@@ -1,0 +1,68 @@
+<h1>Edit Event</h1>
+
+<%= form_for(@event) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  
+<%= select(:all_event, 
+			:city_location, 
+			[['Edinburgh', 'Edinburgh' ], ['Glasgow', 'Glasgow'], ['London', 'London']],
+			:selected => @selected_city) %>
+  
+	<div class="field">
+		<%= f.label :eventName %><br />
+		<%= f.text_field :eventName %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :bandName %><br />
+		<%= f.text_field :bandName %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :venue %><br />
+		<%= f.text_field :venue %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :longitude %><br />
+		<%= f.text_field :longitude %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :latitude %><br />
+		<%= f.text_field :latitude %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :doorsOpen %><br />
+		<%= f.time_select :doorsOpen %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :price %><br />
+		<%= f.text_field :price %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :eventDate %><br />
+		<%= f.date_select :eventDate %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_area :description %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :specialOffers %><br />
+		<%= f.text_area :specialOffers %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit "Update Event" %>
+	</div>
+
+	
+<% end %>
+
+

@@ -1,0 +1,21 @@
+<h1> Band Info used to collect info from external sites </h1>
+
+<table>
+  <tr>
+    <th>Band Name</th>
+	<th>URL</th>
+  </tr>
+
+<% @event_searches.each do |band_info| %>
+  <tr>
+    <td><%=h band_info.bandName %></td>
+    <td><%=h band_info.urlOne %></td>
+	<td><%= link_to 'Show', band_info %></td>
+	<td><%= link_to "Edit", polymorphic_path(band_info, :action => :edit) %></td>
+   	<td><%= link_to "Delete", band_info, :method => :delete, :confirm => 'Are you sure?',  
+									 :title => "Delete Event Search" %></td>
+  </tr>
+<% end %>
+</table>
+
+<li><%= link_to "New", new_event_search_path %></li>

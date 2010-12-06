@@ -44,6 +44,7 @@ GEM
       mime-types
       xml-simple
     builder (2.1.2)
+    chronic (0.3.0)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -115,6 +116,8 @@ PLATFORMS
 DEPENDENCIES
   annotate-models (= 1.0.4)
   aws-s3
+  chronic
+  nokogiri
   paperclip!
   rails (= 3.0.0)
   rspec (= 2.0.0.beta.18)
