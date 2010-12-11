@@ -1,26 +1,5 @@
 
-<h2> Suggested Events </h2>
-
-<%= @savedEventSearches.each do |ses| %>
-	
-	 <td><%= link_to ses.bandName, ses %></td>
-	
-	<%= render 'shared/index_events_table', :events_group => (SuggestedEvent.where(:bandName => ses.bandName)) %> 
-	
-	<% end %>
-
-<h2> All Events </h2>
-
-<%= render 'shared/index_events_table', :events_group => @all_events %>
-
-<h2> All Saved Venues </h2>
-
-<%= render 'shared/index_venues_table', :venues_group => @all_venues %>
-
-
 <h1> Edinburgh </h1>
-
-
 
 <li><%= link_to "New Event", new_all_event_path %></li>
 
@@ -37,6 +16,11 @@
 <h2> Saved venues </h2>
 
 <%= render 'shared/index_venues_table', :venues_group => @ed_venues %>
+
+<h2> ------------------------------ </h2.
+<h2> All Events (for reference only)</h2>
+
+<%= render 'shared/index_events_table', :events_group => @all_events %>
 
 
 

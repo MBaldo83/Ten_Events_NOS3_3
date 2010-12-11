@@ -4,7 +4,8 @@ TenEvents::Application.routes.draw do
   get "band_info_collect/new"
 
   get "all_events/new"
-  get "edinburgh/index"
+  #get "edinburgh/index"
+  #get "glasgow/index"
 
   resources :admin_pages
   resources :users
@@ -16,6 +17,8 @@ TenEvents::Application.routes.draw do
   
   match '/band_info_collect', :to => 'band_info_collect#index'
   match '/edinburgh', :to => 'edinburgh#index'
+  match '/glasgow', :to => 'glasgow#index'
+  match '/london', :to => 'london#index'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/sessions', :to => 'sessions#create'

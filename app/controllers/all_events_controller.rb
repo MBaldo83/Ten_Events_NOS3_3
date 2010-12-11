@@ -55,7 +55,7 @@ class AllEventsController < ApplicationController
     if @event.save
 	
 	  flash[:success] = "new event created"
-      redirect_to '/edinburgh'
+      redirect_to @event
     else
       @title = "New Event"
       render 'new'

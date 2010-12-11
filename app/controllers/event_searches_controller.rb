@@ -14,7 +14,7 @@ end
   
   find_one_band_events(@title)
   
-  redirect_to '/edinburgh/index'
+  redirect_to suggested_events_path
   end
   
 

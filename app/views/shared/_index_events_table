@@ -1,5 +1,6 @@
 <table>
   <tr>
+    <th>Image </th>
     <th>Event Name</th>
     <th>Band Name</th>
     <th>Venue</th>
@@ -7,6 +8,7 @@
 
 <% events_group.each do |event| %>
   <tr>
+    <td><%=h image_tag event.photo.url(:thumb) %></td>
     <td><%=h event.eventName %></td>
     <td><%=h event.bandName %></td>
     <td><%=h event.venue %></td>

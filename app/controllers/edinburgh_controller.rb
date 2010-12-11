@@ -4,7 +4,8 @@ before_filter :authenticate, :except => [:index]
 
 require 'nokogiri'
 require 'open-uri'
-
+require 'paperclip'
+#require 'aws-s3'
 
  def index
 	
@@ -12,6 +13,7 @@ require 'open-uri'
 	
 	#start afresh each time, for test purposes
 	#delete_all_events
+	#delete_all_venues
 	
 	#to allow deleting events
 	@all_events = AllEvent.all
@@ -21,17 +23,12 @@ require 'open-uri'
 	@ed_ten_events = AllEvent.where(:city_location => 'Edinburgh', :ten_event => true)
 	@ed_all_events = AllEvent.where(:city_location => 'Edinburgh', :all_TT_event => true)
 	@ed_venues = Venue.where(:city_location => 'Edinburgh')
-	
-	#find_all_events #function in AppController
-	
-	@savedEventSearches = EventSearch.all
-		
-	@suggested_events = SuggestedEvent.all
+	@all_edinburgh_events = AllEvent.where(:city_location => 'Edinburgh')
 	
 	respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @ed_ten_events }
-      format.json { render :json => @ed_ten_events }
+      format.xml  { render :xml => @all_edinburgh_events }
+      format.json { render :json => @all_edinburgh_events }
     end	
 	
  end
@@ -47,6 +44,16 @@ require 'open-uri'
 	end
 	
 	@suggested_events.each do |e|
+	e.delete
+	end
+	
+  end
+  
+ def delete_all_venues
+   
+   @all_venues = Venue.all
+   
+   	@all_venues.each do |e|
 	e.delete
 	end
 	

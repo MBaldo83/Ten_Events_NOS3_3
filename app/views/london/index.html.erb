@@ -1,1 +1,17 @@
 <h1> London </h1>
+
+<li><%= link_to "New Event", new_all_event_path %></li>
+
+<h2> Ten Events </h2>
+
+<%= render 'shared/index_events_table', :events_group => @lond_ten_events %>
+
+<h2> All Ten Track's Events </h2>
+
+<%= render 'shared/index_events_table', :events_group => @lond_all_events %>
+
+<li><%= link_to "New Venue", new_venue_path %></li>
+
+<h2> Saved venues </h2>
+
+<%= render 'shared/index_venues_table', :venues_group => @lond_venues %>

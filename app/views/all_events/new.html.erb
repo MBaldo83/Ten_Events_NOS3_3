@@ -1,6 +1,6 @@
 <h1> New AllEvents</h1> 
 
-<%= form_for (@event) do |f| %>
+<%= form_for @event, :html => { :multipart => true } do |f| %>
 
 	<div class="field">
 		<%= f.label :ten_event %><br />
@@ -18,11 +18,14 @@
 	</div>
 	
 	<div class="field">
-		<%= f.label :bandName %><br />
+		<%= f.label :'Band Name' %><br />
 		<%= f.text_field :bandName %>
 	</div>
 	
+	<div class="field">
+	<%= f.label :Venue %>
 	<%= collection_select(:all_event, :venue, @venues, :venueName, :venueName) %>
+	</div>
 	
 	<div class="field">
 		<%= f.label :doorsOpen %><br />
@@ -47,6 +50,11 @@
 	<div class="field">
 		<%= f.label :specialOffers %><br />
 		<%= f.text_area :specialOffers %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :photo %>
+		<%= f.file_field :photo%>
 	</div>
 
 	<div class="actions">

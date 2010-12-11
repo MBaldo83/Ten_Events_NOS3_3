@@ -1,7 +1,11 @@
-<h1> EVENTS </h1>
-
-<li><%= link_to "New", new_all_event_path %></li>
 
 
+<h2> Suggested Events </h2>
 
-
+<%= @savedEventSearches.each do |ses| %>
+	
+	 <td><%= link_to ses.bandName, ses %></td>
+	
+	<%= render 'shared/index_events_table', :events_group => (SuggestedEvent.where(:bandName => ses.bandName)) %> 
+	
+	<% end %>

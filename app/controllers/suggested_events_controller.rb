@@ -2,7 +2,9 @@ class SuggestedEventsController < ApplicationController
 def index
 	
 	@title = "SuggestedEvents"
-	@events = SuggestedEvent.all
+	
+	@savedEventSearches = EventSearch.all
+	@suggested_events = SuggestedEvent.all
 	
 	respond_to do |format|
       format.html # index.html.erb
@@ -57,7 +59,7 @@ def index
     if @event.save
 	
 	  flash[:success] = "new event created"
-      redirect_to '/edinburgh'
+      redirect_to @event
     else
       @title = "New Event"
       render 'new'
