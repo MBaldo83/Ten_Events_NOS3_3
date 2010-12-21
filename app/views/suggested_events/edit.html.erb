@@ -4,41 +4,47 @@
   <%= render 'shared/error_messages', :object => f.object %>
   
   	<div class="field">
-		<%= f.label :ten_event %><br />
+		<%= f.label :"ten event?" %><br />
 		<%= f.check_box :ten_event %><br />
 	</div>
 	
 	<div class="field">
-		<%= f.label :all_TT_event %><br />
+		<%= f.label :"all TT event?" %><br />
 		<%= f.check_box :all_TT_event %><br />
 	</div>
   
 	<div class="field">
-		<%= f.label :city_location %><br />
+		<%= f.label :"City" %><br />
 		<%= f.text_field :city_location %>
 	</div>
   
 	<div class="field">
-		<%= f.label :eventName %><br />
+		<%= f.label :"Event Name" %><br />
 		<%= f.text_field :eventName %>
 	</div>
 	
 	<div class="field">
-		<%= f.label :bandName %><br />
+		<%= f.label :"Band Name" %><br />
 		<%= f.text_field :bandName %>
 	</div>
 	
+	<div class="field">
+	<%= f.label :"Venue" %><br />
 	<%= collection_select(:suggested_event, :venue, @venues, :venueName, 
 							:venueName, {:selected => @selected_venue}) %>
-	
-	<div class="field">
-		<%= f.label :longitude %><br />
-		<%= f.text_field :longitude %>
 	</div>
 	
 	<div class="field">
-		<%= f.label :latitude %><br />
-		<%= f.text_field :latitude %>
+	<%= f.label :"Taste" %><br />
+	<%= collection_select(:suggested_event, :taste, @tastes, :genre, 
+							:genre, {:selected => @selected_taste}) %>
+	<%= f.label :"Type here to create new flavour" %>
+	<%= f.text_field :new_taste %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :"Energy Level: A range of 1 - 100 is suggested, but not enforced" %><br />
+		<%= f.number_field :energyLevel %>
 	</div>
 	
 	<div class="field">
@@ -77,5 +83,4 @@
 
 	
 <% end %>
-
 

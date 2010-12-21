@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101206200928) do
+ActiveRecord::Schema.define(:version => 20101216114833) do
 
   create_table "all_events", :force => true do |t|
     t.string   "eventName"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(:version => 20101206200928) do
     t.integer  "photo_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "taste"
+    t.integer  "energyLevel"
+    t.string   "new_taste"
   end
 
   create_table "event_searches", :force => true do |t|
@@ -65,6 +68,15 @@ ActiveRecord::Schema.define(:version => 20101206200928) do
     t.datetime "updated_at"
     t.boolean  "all_TT_event"
     t.boolean  "ten_event"
+    t.string   "taste"
+    t.integer  "energyLevel"
+    t.string   "new_taste"
+  end
+
+  create_table "tastes", :force => true do |t|
+    t.string   "genre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

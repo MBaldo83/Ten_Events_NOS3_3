@@ -13,11 +13,6 @@
 		<%= f.check_box :all_TT_event %><br />
 	</div>
   
-<%= select(:all_event, 
-			:city_location, 
-			[['Edinburgh', 'Edinburgh' ], ['Glasgow', 'Glasgow'], ['London', 'London']],
-			:selected => @selected_city) %>
-  
 	<div class="field">
 		<%= f.label :eventName %><br />
 		<%= f.text_field :eventName %>
@@ -29,8 +24,9 @@
 	</div>
 	
 	<div class="field">
-		<%= f.label :venue %><br />
-		<%= f.text_field :venue %>
+	<%= f.label :"Venue " %>
+	<%= collection_select(:all_event, :venue, @venues, :venueName, 
+						:venueName, {:selected => @selected_venue}) %>
 	</div>
 	
 	<div class="field">
@@ -41,6 +37,19 @@
 	<div class="field">
 		<%= f.label :latitude %><br />
 		<%= f.text_field :latitude %>
+	</div>
+	
+	<div class="field">
+	<%= f.label :"Taste" %><br />
+	<%= collection_select(:all_event, :taste, @tastes, :genre, 
+							:genre, {:selected => @selected_taste}) %>
+	<%= f.label :"Type here to create new flavour" %>
+	<%= f.text_field :new_taste %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :"Energy Level: A range of 1 - 100 is suggested, but not enforced" %><br />
+		<%= f.number_field :energyLevel %>
 	</div>
 	
 	<div class="field">

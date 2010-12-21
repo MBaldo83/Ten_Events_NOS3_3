@@ -1,5 +1,7 @@
 TenEvents::Application.routes.draw do
 
+  get "tastes/index"
+
   get "suggested_events/index"
   get "band_info_collect/new"
 
@@ -14,6 +16,7 @@ TenEvents::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :suggested_events
   resources :event_searches
+  resources :tastes
   
   match '/band_info_collect', :to => 'band_info_collect#index'
   match '/edinburgh', :to => 'edinburgh#index'
@@ -22,6 +25,7 @@ TenEvents::Application.routes.draw do
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/sessions', :to => 'sessions#create'
+  match '/tastes', :to => 'tastes#index'
   
 
   # The priority is based upon order of creation:

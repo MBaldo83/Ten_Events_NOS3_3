@@ -1,17 +1,2 @@
-<h1><%= @event.eventName %></h1>
-<%=h image_tag @event.photo.url(:thumb) %>
-<h2>Date:<%= @event.eventDate.to_formatted_s(:short) %></h2>
-<h2>Doors: <%= @event.doorsOpen.to_formatted_s(:time) %></h2>
-<h2>Band Name: <%= @event.bandName %></h2>
-
-<h2>Venue: <%= @event.venue %></h2>
-<li><%= @event.city_location %></li>
-<li><%= @event.latitude %></li>
-<li><%= @event.longitude %></li> 
-
-<h2>Price: <%= @event.price %></h2>
-<h2>Description</h2>
-<p><%= @event.description %></p>
-<h2>Special Offers</h2>
-<p><%= @event.specialOffers %></p>
+<%= render 'shared/show_events', :event => @event %>
 

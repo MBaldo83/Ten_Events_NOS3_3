@@ -14,7 +14,8 @@ require 'paperclip'
 
 
 def update_attributes_extra(attributes)
-
+	
+	#logic for determining Venue Name and assiging attributes
 	venueName = attributes[:venue]
 	sameVenueName = Venue.where(:venueName => venueName)[0]
 	
@@ -24,6 +25,19 @@ def update_attributes_extra(attributes)
 	attributes[:longitude] = sameVenueName.longitude
 	end
 	
+	#logic for determining Genre, preference to :new_taste if != empty string.
+	newTaste = attributes[:new_taste]
+	
+	if (!newTaste.empty?)
+	new_Taste_Entry = Taste.new
+	new_Taste_Entry.genre = newTaste
+	new_Taste_Entry.save
+	attributes[:taste] = newTaste
+	attributes[:new_taste] = ""
+	end
+	
+	
+	# if TT event / All event selected, save as an AllEvent type, and delete suggested Event
 	if attributes[:all_TT_event].to_i == 1 or attributes[:ten_event].to_i == 1
 	
 	published_event = AllEvent.new

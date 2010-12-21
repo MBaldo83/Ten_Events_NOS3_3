@@ -24,8 +24,11 @@ class AllEventsController < ApplicationController
 
   def edit
      @event = AllEvent.find(params[:id])
+	 @tastes = Taste.all
 	 @venues = Venue.all
-	 @selected_city = @event.city_location
+	 
+	 @selected_venue = @event.venue
+	 @selected_taste = @event.taste
      @title = "Edit AllEvent"
   end
   

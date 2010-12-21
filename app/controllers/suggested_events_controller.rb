@@ -26,8 +26,11 @@ def index
   def edit
      @event = SuggestedEvent.find(params[:id])
 	 @venues = Venue.all
+	 @tastes = Taste.all
+	 
 	 @selected_city = @event.city_location
 	 @selected_venue = @event.venue
+	 @selected_taste = @event.taste
      @title = "Edit SuggestedEvent"
   end
   
