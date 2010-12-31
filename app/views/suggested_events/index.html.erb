@@ -2,6 +2,10 @@
 
 <h2> Suggested Events </h2>
 
+<li><%= link_to "Search All Events", '/suggested_events/search_all_events' %></li>
+
+<p> --------------------------------- </p>
+
 <%= @savedEventSearches.each do |ses| %>
 	
 	 <td><%= link_to ses.bandName, ses %></td>

@@ -1,4 +1,5 @@
 class SuggestedEventsController < ApplicationController
+
 def index
 	
 	@title = "SuggestedEvents"
@@ -11,6 +12,13 @@ def index
       format.xml  { render :xml => @events }
       format.json { render :json => @events }
     end	
+  end
+  
+  def search_all_events
+  
+	find_all_events #method in Application controller
+	redirect_to suggested_events_path
+  
   end
 
   def show
@@ -86,7 +94,7 @@ def index
   def destroy
 	SuggestedEvent.find(params[:id]).destroy
     flash[:success] = "SuggestedEvent destroyed."
-    redirect_to '/edinburgh'
+    redirect_to suggested_events_path
   end
 
 
