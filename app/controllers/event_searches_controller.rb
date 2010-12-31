@@ -35,6 +35,14 @@ end
   
   @event_search = EventSearch.new(params[:event_search])
   
+		if @event_search.myspaceSearch
+		
+		@event_search.eventDateCSS = ".entryDate"
+		@event_search.eventLocationCSS = "#module9 a"
+		@event_search.descriptionCSS = "#module9 p"
+		
+		end #of if
+  
       if @event_search.save
 	
 	  flash[:success] = "new event search created"
@@ -49,7 +57,7 @@ end
   
   @event_search = EventSearch.find(params[:id])
   
-	if @event_search.update_attributes(params[:event_search])
+	if @event_search.update_attributes_extra(params[:event_search])
       flash[:success] = "Event Search updated."
       redirect_to '/event_searches'
     else

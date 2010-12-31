@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101216114833) do
+ActiveRecord::Schema.define(:version => 20101231111852) do
 
   create_table "all_events", :force => true do |t|
     t.string   "eventName"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20101216114833) do
     t.string   "descriptionCSS"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "myspaceSearch"
   end
 
   create_table "suggested_events", :force => true do |t|
