@@ -1,8 +1,6 @@
 <table>
   <tr>
     <th>Date </th>
-    <th>Image </th>
-    <th>Event Name</th>
     <th>Band Name</th>
     <th>Venue</th>
     <th>Description</th>
@@ -11,12 +9,9 @@
 <% events_group.each do |event| %>
   <tr>
     <td><%= event.eventDate.to_formatted_s(:short) %></td>
-    <td><%=h image_tag event.photo.url(:thumb) %></td>
-    <td><%=h event.eventName %></td>
     <td><%=h event.bandName %></td>
     <td><%=h event.venue %></td>
     <td><%=h event.description %></td>
-	<td><%= link_to 'Show', event %></td>
 	<td><%= link_to "Edit", polymorphic_path(event, :action => :edit) %></td>
    	<td><%= link_to "Delete", event, :method => :delete, :confirm => 'Are you sure?',  
 									 :title => "Delete Event" %></td>
