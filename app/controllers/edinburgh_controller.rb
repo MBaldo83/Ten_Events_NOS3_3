@@ -10,6 +10,7 @@ require 'paperclip'
  def index
 	
 	@title = "Edinburgh"
+	logger.debug"Silly silly silly"
 	
 	#start afresh each time, for test purposes
 	#delete_all_events

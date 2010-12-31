@@ -34,6 +34,9 @@ def do_search(event_search)
 	url = event_search.urlOne
 	
 if validate(url)
+
+logger.debug"Passed Validate URL"
+
 	doc = Nokogiri::HTML(open(url))
 	
 	#if url = myspace, can get friends number 
@@ -60,6 +63,7 @@ if validate(url)
 		
 			if eventDate != 0
 				@savedEvent.eventDate = date_from_string(startDate[i].content) 
+				logger.debug(startDate[i].content)
 				end
 			
 			test = SuggestedEvent.where(:bandName => event_search.bandName, 
