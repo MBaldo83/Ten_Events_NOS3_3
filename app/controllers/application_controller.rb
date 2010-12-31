@@ -31,7 +31,8 @@ end
 
 def do_search(event_search)
 
-	logger.debug"In Do Search"
+	logger.debug"Changing AppController"
+	logger.debug"in do search"
 	url = event_search.urlOne
 	
 if validate(url)
