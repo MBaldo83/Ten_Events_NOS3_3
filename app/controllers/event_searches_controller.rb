@@ -12,6 +12,8 @@ end
   @event_search = EventSearch.find(params[:id])
   @title = @event_search.bandName
   
+  logger.debug"In Event Search Show"
+  
   find_one_band_events(@title)
   
   redirect_to suggested_events_path

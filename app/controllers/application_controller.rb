@@ -31,6 +31,7 @@ end
 
 def do_search(event_search)
 
+	logger.debug"In Do Search"
 	url = event_search.urlOne
 	
 if validate(url)
