@@ -16,7 +16,7 @@ require 'paperclip'
 	#delete_all_venues
 	
 	#to allow deleting events
-	@all_events = AllEvent.all
+	@all_events = AllEvent.order('"eventDate" ASC')
 	@all_venues = Venue.all
 	
 	#final implementation
