@@ -20,8 +20,8 @@ require 'paperclip'
 	@all_venues = Venue.all
 	
 	#final implementation
-	@ed_ten_events = AllEvent.where(:city_location => 'Edinburgh', :ten_event => true)
-	@ed_all_events = AllEvent.where(:city_location => 'Edinburgh', :all_TT_event => true)
+	@ed_ten_events = AllEvent.where(:city_location => 'Edinburgh', :ten_event => true).order('eventDate ASC')
+	@ed_all_events = AllEvent.where(:city_location => 'Edinburgh', :all_TT_event => true).order('eventDate ASC')
 	@ed_venues = Venue.where(:city_location => 'Edinburgh')
 	@all_edinburgh_events = AllEvent.where(:city_location => 'Edinburgh')
 	

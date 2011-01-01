@@ -13,13 +13,6 @@ def index
       format.json { render :json => @events }
     end	
   end
-  
-  def search_all_events
-  
-	find_all_events #method in Application controller
-	redirect_to suggested_events_path
-  
-  end
 
   def show
   @event = SuggestedEvent.find(params[:id])
@@ -95,6 +88,19 @@ def index
 	SuggestedEvent.find(params[:id]).destroy
     flash[:success] = "SuggestedEvent destroyed."
     redirect_to suggested_events_path
+  end
+  
+    def search_all_events
+  
+	find_all_events #method in Application controller
+	redirect_to suggested_events_path
+  
+  end
+  
+  def delete_all_by_band(band)
+  
+  logger.debug(band)
+  
   end
 
 

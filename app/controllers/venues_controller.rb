@@ -2,7 +2,7 @@ class VenuesController < ApplicationController
  def index
 	
 	@title = "All Venues"
-	@venues = Venue.all
+	@venues = Venue.order('venueName ASC')
 	
 	respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +45,7 @@ class VenuesController < ApplicationController
     if @venue.save
 	
 	  flash[:success] = "New venue created"
-      redirect_to '/edinburgh'
+      redirect_to venues_path
     else
       @title = "New Venue"
       render 'new'
@@ -70,7 +70,26 @@ class VenuesController < ApplicationController
   def destroy
 	Venue.find(params[:id]).destroy
     flash[:success] = "Venue deleted"
-    redirect_to '/edinburgh'
+    redirect_to venues_path
   end
+  
+ def delete_all_unused_venues
+  
+  @unused_venues = Venue.where(:city_location => nil)
+  
+  @unused_venues.each do |uv|
+  uv.delete
+  end
+  
+  redirect_to venues_path
+  
+ end
+ 
+ def order_by_city
+ 
+ @title = "All Venues"
+ @venues = Venue.order('city_location ASC')
+ 
+ end
 
 end

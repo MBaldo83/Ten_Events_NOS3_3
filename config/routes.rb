@@ -4,13 +4,10 @@ TenEvents::Application.routes.draw do
 
   get "suggested_events/index"
   get "suggested_events/search_all_events"
-  
-  
-  get "band_info_collect/new"
 
   get "all_events/new"
-  #get "edinburgh/index"
-  #get "glasgow/index"
+  get "venues/delete_all_unused_venues"
+  get "venues/order_by_city"
 
   resources :admin_pages
   resources :users
@@ -21,7 +18,6 @@ TenEvents::Application.routes.draw do
   resources :event_searches
   resources :tastes
   
-  match '/band_info_collect', :to => 'band_info_collect#index'
   match '/edinburgh', :to => 'edinburgh#index'
   match '/glasgow', :to => 'glasgow#index'
   match '/london', :to => 'london#index'
@@ -29,7 +25,6 @@ TenEvents::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   match '/sessions', :to => 'sessions#create'
   match '/tastes', :to => 'tastes#index'
-  #match '/suggested_events/search_all_events', :to => 'suggested_events#search_all_events'
   
 
   # The priority is based upon order of creation:

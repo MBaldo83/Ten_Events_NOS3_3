@@ -1,7 +1,7 @@
 <table>
   <tr>
-    <th>Venue</th>
-    <th>City</th>
+    <th><%= link_to "Venue", venues_path %></th>
+    <th><%= link_to "City", 'venues/order_by_city' %></th>
   </tr>
 
 <% venues_group.each do |venue| %>
