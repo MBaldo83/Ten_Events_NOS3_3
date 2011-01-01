@@ -3,7 +3,7 @@ class EventSearchesController < ApplicationController
 def index
 
 @title = "Event search index"
-@event_searches = EventSearch.order("bandName ASC")
+@event_searches = EventSearch.order('"bandName" ASC')
 #@event_searches = EventSearch.all
 
 end

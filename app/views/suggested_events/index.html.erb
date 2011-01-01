@@ -10,6 +10,6 @@
 	
 	 <td><%= link_to ses.bandName, ses %></td>
 	
-	<%= render 'shared/index_sugg_events_table', :events_group => (SuggestedEvent.where(:bandName => ses.bandName).order("eventDate ASC")) %> 
+	<%= render 'shared/index_sugg_events_table', :events_group => (SuggestedEvent.where(:bandName => ses.bandName).order('"eventDate" ASC')) %> 
 	
 	<% end %>
