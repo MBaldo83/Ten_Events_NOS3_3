@@ -2,7 +2,7 @@ class VenuesController < ApplicationController
  def index
 	
 	@title = "All Venues"
-	@venues = Venue.order('venueName ASC')
+	@venues = Venue.order("venueName ASC")
 	
 	respond_to do |format|
       format.html # index.html.erb
