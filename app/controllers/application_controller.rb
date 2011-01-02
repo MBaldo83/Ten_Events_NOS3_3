@@ -1,11 +1,17 @@
 class ApplicationController < ActionController::Base
   
+  require 'date'
+  require 'nokogiri'
+  require 'open-uri'
+  require 'chronic'
+  
   protect_from_forgery
   include SessionsHelper
   
   	def authenticate
       deny_access unless signed_in?
     end
+	
 	
   def find_all_events
 
@@ -18,9 +24,9 @@ class ApplicationController < ActionController::Base
 	end
  end
 
-def find_one_band_events(bandName)
+def find_one_band_events(event_id)
 
-	es = EventSearch.where(:bandName => bandName)[0]
+	es = EventSearch.where(:id => event_id)[0]
 	do_search(es)
 end
 
@@ -160,7 +166,7 @@ def paramMatcher(modelString, param, cssScrapedString)
 	end # of case
 
 return nil
-end # of def
+end # of def param Matcher
 
 def validate(url)
   begin

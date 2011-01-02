@@ -10,13 +10,21 @@ end
 
 
   def show
+  
+  #the instance of the object that holds the details of the url / band name etc...
   @event_search = EventSearch.find(params[:id])
   @title = @event_search.bandName
   
   logger.debug"In Event Search Show"
+  #the instance of the object that gets put on the queue
+  @event_searcher = EventSearcher.new
+  @event_searcher.one_event_id = @event_search.id
+  @event_searcher.all_events = 0
+  logger.debug(@event_search.id)
+  Delayed::Job.enqueue @event_searcher
   
-  find_one_band_events(@title)
-  
+  #find_one_band_events(@title)
+  flash[:notice] = "finding events... refresh page in a few seconds"
   redirect_to suggested_events_path
   end
   

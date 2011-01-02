@@ -12,7 +12,7 @@ require 'paperclip'
 	@title = "Edinburgh"
 	
 	#start afresh each time, for test purposes
-	#delete_all_events
+	delete_all_events
 	#delete_all_venues
 	
 	#to allow deleting events

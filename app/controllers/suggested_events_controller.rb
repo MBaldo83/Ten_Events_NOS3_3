@@ -91,12 +91,15 @@ def index
   end
   
   def search_all_events
-  
-	#@event_searcher = EventSearcher.new
-	#@event_searcher.delay.find_all_events
     
-	Delayed::Job.enqueue EventSearcher.new
-	#find_all_events #method in Application controller
+	logger.debug"Sugg E search all events"
+  #the instance of the object that gets put on the queue
+  @event_searcher = EventSearcher.new
+  @event_searcher.one_event_id = nil
+  @event_searcher.all_events = 1
+  Delayed::Job.enqueue @event_searcher
+	
+	flash[:notice] = "Finding All events, this takes a while, refresh after 10 mins"
 	redirect_to suggested_events_path
   
   end
