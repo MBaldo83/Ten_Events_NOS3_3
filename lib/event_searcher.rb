@@ -1,22 +1,27 @@
-class ApplicationController < ActionController::Base
-  
-  protect_from_forgery
-  include SessionsHelper
-  
-  	def authenticate
-      deny_access unless signed_in?
-    end
-	
-  def find_all_events
+class EventSearcher < ApplicationController
 
-	@event_searches = EventSearch.all
+  require 'date'
+  require 'nokogiri'
+  require 'open-uri'
+  require 'chronic'
+
+
+ def perform
+
+	 find_all_events
+
+ end
+	
+ def find_all_events
+
+@event_searches = EventSearch.all
 
 	@event_searches.each do |es|
 
 	do_search(es)
 
 	end
- end
+end
 
 def find_one_band_events(bandName)
 
@@ -173,6 +178,5 @@ def validate(url)
     end
   return true
 end
-	
 
-end # of class
+end

@@ -29,8 +29,11 @@ end
 gem 'nokogiri'
 
 # Chronic to parse date / time from strings
-
 gem 'chronic'
+
+# Delayed Jobs for background tasks
+gem 'delayed_job'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

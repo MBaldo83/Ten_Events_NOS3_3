@@ -90,16 +90,14 @@ def index
     redirect_to suggested_events_path
   end
   
-    def search_all_events
+  def search_all_events
   
-	find_all_events #method in Application controller
+	#@event_searcher = EventSearcher.new
+	#@event_searcher.delay.find_all_events
+    
+	Delayed::Job.enqueue EventSearcher.new
+	#find_all_events #method in Application controller
 	redirect_to suggested_events_path
-  
-  end
-  
-  def delete_all_by_band(band)
-  
-  logger.debug(band)
   
   end
 

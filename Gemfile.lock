@@ -45,6 +45,10 @@ GEM
       xml-simple
     builder (2.1.2)
     chronic (0.3.0)
+    daemons (1.1.0)
+    delayed_job (2.1.2)
+      activesupport (~> 3.0)
+      daemons
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -117,6 +121,7 @@ DEPENDENCIES
   annotate-models (= 1.0.4)
   aws-s3
   chronic
+  delayed_job
   nokogiri
   paperclip!
   rails (= 3.0.0)
