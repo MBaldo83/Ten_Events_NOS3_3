@@ -32,7 +32,7 @@ end
 
 def do_search(event_search)
 
-	logger.debug"Changing AppController"
+	logger.debug"Changing AppController again"
 	logger.debug"in do search"
 	url = event_search.urlOne
 	
