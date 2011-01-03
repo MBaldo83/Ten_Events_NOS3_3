@@ -1,4 +1,7 @@
 class VenuesController < ApplicationController
+
+before_filter :authenticate
+
  def index
 	
 	@title = "All Venues"

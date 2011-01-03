@@ -1,4 +1,6 @@
 class TastesController < ApplicationController
+
+before_filter :authenticate
   
   def index
   

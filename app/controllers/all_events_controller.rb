@@ -1,5 +1,7 @@
 class AllEventsController < ApplicationController
 
+before_filter :authenticate
+
  def index
 	
 	@title = "AllEvents"

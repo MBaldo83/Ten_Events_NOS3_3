@@ -1,5 +1,7 @@
 class SuggestedEventsController < ApplicationController
 
+before_filter :authenticate
+
 def index
 	
 	@title = "SuggestedEvents"

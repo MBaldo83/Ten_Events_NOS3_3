@@ -42,8 +42,6 @@ logger.debug"Passed Validate URL"
 
 	doc = Nokogiri::HTML(open(url))
 	
-	#if url = myspace, can get friends number 
-	
 	#search the doc with the saved css search strings
 	if !(event_search.eventDateCSS.empty?) 
 		startDate = doc.css(event_search.eventDateCSS) else eventDate = 0 end

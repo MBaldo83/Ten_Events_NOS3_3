@@ -1,5 +1,7 @@
 class EventSearchesController < ApplicationController
 
+before_filter :authenticate
+
 def index
 
 @title = "Event search index"
