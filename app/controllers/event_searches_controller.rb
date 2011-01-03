@@ -23,9 +23,9 @@ end
   @event_searcher.one_event_id = @event_search.id
   @event_searcher.all_events = 0
   logger.debug(@event_search.id)
+  Delayed::Worker.max_attempts = 1
   Delayed::Job.enqueue @event_searcher
-  
-  #find_one_band_events(@title)
+  #find_one_band_events(@event_search.id)
   flash[:notice] = "finding events... refresh page in a few seconds"
   redirect_to suggested_events_path
   end
