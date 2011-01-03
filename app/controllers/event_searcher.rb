@@ -10,7 +10,7 @@ class EventSearcher < ApplicationController
   
   def perform
   
-  logger.debug"in perform"
+  logger.debug"in perform changing class"
   
   if all_events == 1
   

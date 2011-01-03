@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   	def authenticate
+	logger.debug"changing app controller"
       deny_access unless signed_in?
     end
 	
