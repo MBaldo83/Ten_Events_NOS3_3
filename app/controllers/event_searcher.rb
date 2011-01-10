@@ -54,6 +54,7 @@ end
 def do_search(event_search)
 
 	url = event_search.urlOne
+	Rails.logger.debug "*****************" 
 	
 if validate(url)
 
