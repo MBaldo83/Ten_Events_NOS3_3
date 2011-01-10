@@ -1,6 +1,6 @@
-class EventSearcher < ApplicationController
+class EventSearcher
   
-    require 'date'
+  require 'date'
   require 'nokogiri'
   require 'open-uri'
   require 'chronic'
@@ -10,11 +10,8 @@ class EventSearcher < ApplicationController
   
   def perform
   
-  logger.debug"in perform changing class"
-  
   if all_events == 1
   
-	logger.debug"in perform, all_events == 1"
   
 	find_all_events
 	
@@ -22,8 +19,7 @@ class EventSearcher < ApplicationController
 	
   if one_event_id != nil
   
-  logger.debug"in perform, one_event != nil"
-  logger.debug(one_event_id)
+  Rails.logger.debug(one_event_id)
   find_one_band_events(one_event_id)
   
   end
@@ -31,7 +27,7 @@ class EventSearcher < ApplicationController
   end # Of Perform
   
   
-  # --------------- Stuff moved from AppController
+  # --------------- Code moved from AppController
   
   
     def find_all_events
@@ -39,7 +35,10 @@ class EventSearcher < ApplicationController
 	@event_searches = EventSearch.all
 
 	@event_searches.each do |es|
-
+	
+	#take this out in production
+	#es = nil_fields_to_empty_strings(es)
+	
 	do_search(es)
 
 	end
@@ -48,18 +47,15 @@ class EventSearcher < ApplicationController
 def find_one_band_events(event_id)
 
 	es = EventSearch.where(:id => event_id)[0]
+	es = nil_fields_to_empty_strings(es)
 	do_search(es)
 end
 
 def do_search(event_search)
 
-	logger.debug"Changing AppController"
-	logger.debug"in do search"
 	url = event_search.urlOne
 	
 if validate(url)
-
-logger.debug"Passed Validate URL"
 
 	doc = Nokogiri::HTML(open(url))
 	
@@ -80,13 +76,16 @@ logger.debug"Passed Validate URL"
 	
  if eventDate != 0	
 	while i < startDate.length # find all events on that page going through each case of start date
-	logger.debug "going through all start dates" 
+	Rails.logger.debug "*****************" 
+	Rails.logger.debug(event_search.bandName)
+	Rails.logger.debug "*****************" 
 	
-		SuggestedEvent.new do |@savedEvent|
+		@savedEvent = SuggestedEvent.new
+		#SuggestedEvent.new do |@savedEvent|
 		
 			if eventDate != 0 && startDate[i]
 				@savedEvent.eventDate = date_from_string(startDate[i].content) 
-				logger.debug(startDate[i].content)
+				Rails.logger.debug(startDate[i].content)
 				end
 			
 			test = SuggestedEvent.where(:bandName => event_search.bandName, 
@@ -132,7 +131,7 @@ logger.debug"Passed Validate URL"
 			
 			@savedEvent.save	
 			end # of if !test
-		end # of .new do
+		#end # of .new do
 	 i += 1
 	end # of while
  
@@ -142,6 +141,63 @@ end # of if url passes
 
 
 end # of def
+
+def nil_fields_to_empty_strings(event_search)
+#set marker to know whether to save or not
+marker = 0
+Rails.logger.debug" changing nil fields to empty strings"
+		
+		#if the attribute is nil, change it to empty string
+		if event_search.urlOne == nil
+		event_search.urlOne = ""
+		marker = 1
+		end
+		
+		if event_search.bandName == nil
+		event_search.bandName = ""
+		marker = 1
+		end
+		
+		if event_search.eventDateCSS == nil
+		event_search.eventDateCSS = ""
+		marker = 1
+		end
+		
+		if event_search.eventNameCSS == nil
+		event_search.eventNameCSS = ""
+		marker = 1
+		end
+		
+		if event_search.eventTimeCSS == nil
+		event_search.eventTimeCSS = ""
+		marker = 1
+		end
+		
+		if event_search.eventLocationCSS == nil
+		event_search.eventLocationCSS = ""
+		marker = 1
+		end
+		
+		if event_search.priceCSS == nil
+		event_search.priceCSS = ""
+		marker = 1
+		end
+		
+		if event_search.descriptionCSS == nil
+		event_search.descriptionCSS = ""
+		marker = 1
+		end
+
+	
+	if marker == 1
+	Rails.logger.debug"saving"
+	Rails.logger.debug(event_search.bandName)
+	event_search.save
+	end
+	
+	return event_search
+
+end # of def nil fields to empty strings
 
 
 # get the date from whatever string gets thrown

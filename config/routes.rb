@@ -4,6 +4,7 @@ TenEvents::Application.routes.draw do
 
   get "suggested_events/index"
   get "suggested_events/search_all_events"
+  get "suggested_events/delete_all_sugg_events"
 
   get "all_events/new"
   get "venues/delete_all_unused_venues"

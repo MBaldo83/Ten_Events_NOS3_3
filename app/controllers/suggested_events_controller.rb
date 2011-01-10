@@ -6,8 +6,11 @@ def index
 	
 	@title = "SuggestedEvents"
 	
-	@savedEventSearches = EventSearch.all
+	@savedEventSearches = EventSearch.order('"bandName" ASC')
 	@suggested_events = SuggestedEvent.all
+	
+	#making new events from list of artists
+	#make_new_searches
 	
 	respond_to do |format|
       format.html # index.html.erb
@@ -103,6 +106,19 @@ def index
 	
 	flash[:notice] = "Finding All events, this takes a while, refresh after 10 mins"
 	redirect_to suggested_events_path
+  
+  end
+  
+  def delete_all_sugg_events
+  
+  @all_doomed_events = SuggestedEvent.all
+  
+  @all_doomed_events.each do |d|
+  d.destroy
+  end
+  
+  redirect_to suggested_events_path
+  
   
   end
 
