@@ -32,14 +32,23 @@ class EventSearcher
   
     def find_all_events
 
-	@event_searches = EventSearch.all
-
-	@event_searches.each do |es|
+	@event_searches = EventSearch.order('"bandName" ASC')
+	j = 0
+	
+	while j < @event_searches.length
+	es = @event_searches[j]
+	
+	Rails.logger.debug "*****************" 
+	Rails.logger.debug(j)
+	Rails.logger.debug(es.bandName)
 	
 	#take this out in production
 	#es = nil_fields_to_empty_strings(es)
 	
 	do_search(es)
+	
+	Rails.logger.debug "*****************" 
+	j += 1
 
 	end
  end
@@ -54,7 +63,6 @@ end
 def do_search(event_search)
 
 	url = event_search.urlOne
-	Rails.logger.debug "*****************" 
 	
 if validate(url)
 
@@ -77,12 +85,8 @@ if validate(url)
 	
  if eventDate != 0	
 	while i < startDate.length # find all events on that page going through each case of start date
-	Rails.logger.debug "*****************" 
-	Rails.logger.debug(event_search.bandName)
-	Rails.logger.debug "*****************" 
 	
 		@savedEvent = SuggestedEvent.new
-		#SuggestedEvent.new do |@savedEvent|
 		
 			if eventDate != 0 && startDate[i]
 				@savedEvent.eventDate = date_from_string(startDate[i].content) 
@@ -129,7 +133,9 @@ if validate(url)
 			if @savedEvent.eventDate.year == -4712
 				@savedEvent.description = "Dodgy event date, check css search, and try again"
 				end
-			
+				
+			Rails.logger.debug"saving..."
+			Rails.logger.debug(@savedEvent.venue)
 			@savedEvent.save	
 			end # of if !test
 		#end # of .new do

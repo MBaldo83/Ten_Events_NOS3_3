@@ -6,8 +6,9 @@ class EventSearch < ActiveRecord::Base
 	if attributes[:myspaceSearch].to_i == 1
 	
 	attributes[:eventDateCSS] = ".entryDate"
-	attributes[:eventLocationCSS] = "#module9 a"
-	attributes[:descriptionCSS] = "#module9 p"
+	attributes[:eventLocationCSS] = ".summary"
+	attributes[:descriptionCSS] = ".locality"
+	attributes[:eventTimeCSS] = ".dtstart"
 	
 	end
  

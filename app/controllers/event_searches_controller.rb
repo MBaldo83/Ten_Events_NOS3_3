@@ -6,7 +6,9 @@ def index
 
 @title = "Event search index"
 @event_searches = EventSearch.order('"bandName" ASC')
-#@event_searches = EventSearch.all
+
+#remove this in production remember
+#update_to_new_myspace_searchnames
 
 end
 
@@ -22,7 +24,6 @@ end
   @event_searcher = EventSearcher.new
   @event_searcher.one_event_id = @event_search.id
   @event_searcher.all_events = 0
-  logger.debug(@event_search.id)
   Delayed::Worker.max_attempts = 1
   Delayed::Job.enqueue @event_searcher
   #find_one_band_events(@event_search.id)
@@ -84,6 +85,31 @@ end
 	EventSearch.find(params[:id]).destroy
     flash[:success] = "Event search destroyed."
     redirect_to '/event_searches'
+  end
+  
+ 
+ #A function put in to update all myspace searches to better urls, and css searches
+ def update_to_new_myspace_searchnames
+  
+  logger.debug"Updating Myspace Search Names"
+  myspace = "myspace"
+  http = "http"
+  
+  @all_event_searches = EventSearch.all
+  
+	@all_event_searches.each do |aes|
+	
+		if aes.urlOne.scan(myspace)[0] and aes.urlOne.scan(http)[0]
+			
+			aes.descriptionCSS = ".locality"
+  
+			logger.debug(aes.bandName)
+			
+			#aes.save
+		end
+  
+	end
+  
   end
   
   
